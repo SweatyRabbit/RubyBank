@@ -1,0 +1,32 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+    TargetRubyVersion: 3.2.2
+    NewCops: enable
+
+Layout/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false
+
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - spec/**/*
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*'
+
+Rails/BulkChangeTable:
+  Enabled: false
+
+Metrics/AbcSize:
+  Exclude:
+    - db/migrate/*
