@@ -20,7 +20,7 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
-  config.action_mailer.default_url_options = { host: 'localhost: 3000' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     user_name: ENV.fetch('SMTP_USERNAME'),

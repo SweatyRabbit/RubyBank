@@ -1,1 +1,28 @@
 <p> Hello World! </p>
+
+<%= link_to 'Log out', destroy_user_session_path, data: { turbo_method: :delete } %>
+
+<%= form_with(url: transactions_path, method: "post", local: true) do |form| %>
+  <!-- Sender Card Selection -->
+  <div class="field">
+    <%= form.label :sender_card, "Select Sender Card" %>
+    <%= form.select :sender_card, @sender_cards.collect { |card| card.number }, prompt: "Select a Card", required: true %>
+  </div>
+
+  <!-- Recipient Card Selection -->
+  <div class="field">
+    <%= form.label :receiver_card, "Select Recipient Card" %>
+    <%= form.select :receiver_card, @receiver_cards.collect { |card| card.number }, prompt: "Select a Card", required: true %>
+  </div>
+
+  <!-- Amount -->
+  <div class="field">
+    <%= form.label :amount, "Amount" %>
+    <%= form.text_field :amount, required: true %>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="actions">
+    <%= form.submit "Transfer Money" %>
+  </div>
+<% end %>

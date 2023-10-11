@@ -7,7 +7,9 @@ ruby '3.2.2'
 
 gem 'bootsnap', require: false
 gem 'devise', '~> 4.9', '>= 4.9.2'
+gem 'i18n', '~> 1.14', '>= 1.14.1'
 gem 'importmap-rails'
+gem 'interactor', '~> 3.1', '>= 3.1.2'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
