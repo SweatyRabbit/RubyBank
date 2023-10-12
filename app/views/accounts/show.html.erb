@@ -1,0 +1,9 @@
+<h1> My Account </h1>
+
+<h2> My Cards </h2>
+<% @user.cards.each do |card| %>
+  <p> Card number: <%= card.number %> </p>
+  <p> Card balance: <%= number_to_currency(card.balance) %> </p>
+<% end %>
+
+<%= link_to 'Home', root_path %>
