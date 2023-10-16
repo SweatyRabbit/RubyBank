@@ -1,11 +1,9 @@
 en:
-  number:
-     currency:
-        format:
-          unit: '$'
-          delimiter: ','
-          separator: '.'
-          precision: 2
-          format: '%u%n'
+  time:
+    formats:
+      default: "%Y.%m.%d - %H:%M"
   errors:
     non_negative_balance: Balance cannot be negative
+    bigger_than_balance: cannot be bigger than balance
+    no_card: No such card
+    invalid_transfer: You can`t transfer money on the same card

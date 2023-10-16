@@ -7,4 +7,9 @@ class Card < ApplicationRecord
   validates :balance, numericality: { greater_than_or_equal_to: MIN_VALUE }
 
   belongs_to :user
+  has_many :transactions, dependent: :destroy
+
+  def balance
+    transactions.sum(:amount)
+  end
 end

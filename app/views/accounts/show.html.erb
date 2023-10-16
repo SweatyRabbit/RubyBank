@@ -3,7 +3,17 @@
 <h2> My Cards </h2>
 <% @user.cards.each do |card| %>
   <p> Card number: <%= card.number %> </p>
-  <p> Card balance: <%= number_to_currency(card.balance) %> </p>
+  <p> Card balance: <%= card.decorate.formatted_balance %> </p>
+<% end %>
+
+<h2> My Transactions </h2>
+<% @user.cards.each do |card| %>
+  <% card.transactions.each do |transaction| %>
+    <p>Sender card: <%= transaction.sender_card %></p>
+    <p>Recipient card: <%= transaction.recipient_card %></p>
+    <p>Amount: <%= transaction.decorate.formatted_amount %></p>
+    <p>Date: <%= I18n.l(transaction.created_at) %></p>
+  <% end %>
 <% end %>
 
 <%= link_to 'Home', root_path %>

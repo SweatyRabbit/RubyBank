@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_10_180052) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_15_205311) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,12 +18,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_180052) do
     t.string "number", null: false
     t.string "expiration_date"
     t.string "cvv"
-    t.float "balance"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["number"], name: "index_cards_on_number", unique: true
     t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string "sender_card"
+    t.string "recipient_card"
+    t.integer "amount"
+    t.bigint "card_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_transactions_on_card_id"
   end
 
   create_table "users", force: :cascade do |t|
