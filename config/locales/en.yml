@@ -7,3 +7,4 @@ en:
     bigger_than_balance: cannot be bigger than balance
     no_card: No such card
     invalid_transfer: You can`t transfer money on the same card
+    invalid_amount: should include only digits

@@ -1,19 +1,29 @@
 <h1> My Account </h1>
 
+<%= link_to 'Home', root_path %>
+
 <h2> My Cards </h2>
-<% @user.cards.each do |card| %>
+<% @user.credit_cards.each do |card| %>
   <p> Card number: <%= card.number %> </p>
   <p> Card balance: <%= card.decorate.formatted_balance %> </p>
 <% end %>
 
-<h2> My Transactions </h2>
-<% @user.cards.each do |card| %>
-  <% card.transactions.each do |transaction| %>
-    <p>Sender card: <%= transaction.sender_card %></p>
-    <p>Recipient card: <%= transaction.recipient_card %></p>
+<h2> My sended transactions </h2>
+<% if @user.sent_transactions.present? %>
+  <% @user.sent_transactions.each do |transaction| %>
+    <p>Sender card: <%= transaction.sender_card.number %></p>
+    <p>Recipient card: <%= transaction.recipient_card.number %></p>
     <p>Amount: <%= transaction.decorate.formatted_amount %></p>
     <p>Date: <%= I18n.l(transaction.created_at) %></p>
   <% end %>
 <% end %>
 
-<%= link_to 'Home', root_path %>
+<h2> My received transactions </h2>
+<% if @user.received_transactions.present? %>
+  <% @user.received_transactions.each do |transaction| %>
+    <p>Sender card: <%= transaction.sender_card.number %></p>
+    <p>Recipient card: <%= transaction.recipient_card.number %></p>
+    <p>Amount: <%= transaction.decorate.formatted_amount %></p>
+    <p>Date: <%= I18n.l(transaction.created_at) %></p>
+  <% end %>
+<% end %>

@@ -10,29 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_15_205311) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_18_211136) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cards", force: :cascade do |t|
+  create_table "credit_cards", force: :cascade do |t|
     t.string "number", null: false
-    t.string "expiration_date"
-    t.string "cvv"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["number"], name: "index_cards_on_number", unique: true
-    t.index ["user_id"], name: "index_cards_on_user_id"
+    t.integer "balance"
+    t.index ["number"], name: "index_credit_cards_on_number", unique: true
+    t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.string "sender_card"
-    t.string "recipient_card"
     t.integer "amount"
-    t.bigint "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["card_id"], name: "index_transactions_on_card_id"
+    t.bigint "sender_card_id"
+    t.bigint "recipient_card_id"
+    t.index ["recipient_card_id"], name: "index_transactions_on_recipient_card_id"
+    t.index ["sender_card_id"], name: "index_transactions_on_sender_card_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,4 +50,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_15_205311) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "transactions", "credit_cards", column: "recipient_card_id"
+  add_foreign_key "transactions", "credit_cards", column: "sender_card_id"
 end

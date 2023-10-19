@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CardDecorator < ApplicationDecorator
+class CreditCardDecorator < ApplicationDecorator
   delegate_all
 
   def formatted_balance
