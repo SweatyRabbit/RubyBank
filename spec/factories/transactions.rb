@@ -2,9 +2,8 @@
 
 FactoryBot.define do
   factory :transaction do
-    card
     amount { Random.rand(1000..100_000) }
-    sender_card { card.number }
-    recipient_card { FFaker::Bank.card_number }
+    sender_card factory: %i[credit_card]
+    recipient_card factory: %i[credit_card]
   end
 end

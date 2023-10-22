@@ -7,18 +7,14 @@ ruby '3.2.2'
 
 gem 'bootsnap', require: false
 gem 'devise', '~> 4.9', '>= 4.9.2'
-gem 'draper', '~> 4.0', '>= 4.0.2'
 gem 'i18n', '~> 1.14', '>= 1.14.1'
-gem 'importmap-rails'
+gem 'importmap-rails', '~> 1.2', '>= 1.2.1'
 gem 'interactor', '~> 3.1', '>= 3.1.2'
-gem 'jbuilder'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 6.4'
 gem 'rails', '~> 7.1.1'
-gem 'redis', '~> 4.0'
-gem 'sprockets-rails'
-gem 'stimulus-rails'
-gem 'turbo-rails'
+gem 'sprockets-rails', '~> 3.4', '>= 3.4.2'
+gem 'turbo-rails', '~> 1.5'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
@@ -31,15 +27,17 @@ group :development, :test do
   gem 'lefthook', '~> 1.5', '>= 1.5.2'
   gem 'pry-rails', '~> 0.3.9'
   gem 'rubocop-rails', '~> 2.21', '>= 2.21.2'
+  gem 'rubocop-rspec', '~> 2.24', '>= 2.24.1'
 end
 
 group :development do
-  gem 'web-console'
+  gem 'web-console', '~> 4.2', '>= 4.2.1'
 end
 
 group :test do
+  gem 'capybara', '~> 3.39', '>= 3.39.2'
   gem 'rspec-rails', '~> 6.0', '>= 6.0.3'
-  gem 'rubocop-rspec', '~> 2.24', '>= 2.24.1'
+  gem 'selenium-webdriver', '~> 4.14'
   gem 'shoulda-matchers', '~> 5.3'
   gem 'simplecov', '~> 0.22.0'
 end

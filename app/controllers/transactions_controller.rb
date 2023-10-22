@@ -2,27 +2,17 @@
 
 class TransactionsController < ApplicationController
   def create
-    transaction_form = TransactionForm.new(transaction_params)
-
-    if transaction_form.valid?
-      transaction = TransferMoney.call(transaction_params)
-      handle_transaction_result(transaction)
+    transaction = TransferMoney.call(transaction_params)
+    if transaction.success?
+      redirect_to root_path, notice: I18n.t('successful_transaction')
     else
-      redirect_to root_path, alert: transaction_form.errors.full_messages.join('. ')
+      redirect_to root_path, alert: transaction.error
     end
   end
 
   private
 
   def transaction_params
-    params.permit(:amount, :sender_card, :recipient_card)
-  end
-
-  def handle_transaction_result(transaction)
-    if transaction.success?
-      redirect_to root_path
-    else
-      redirect_to root_path, alert: transaction.error
-    end
+    params.permit(:amount, :sender_card, :recipient_card, :lock_version)
   end
 end

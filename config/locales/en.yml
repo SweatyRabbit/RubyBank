@@ -2,9 +2,41 @@ en:
   time:
     formats:
       default: "%Y.%m.%d - %H:%M"
+  number:
+     currency:
+        format:
+          unit: '$'
+          delimiter: ','
+          separator: '.'
+          precision: 2
+          format: '%u%n'
+  welcome_message: Welcome to the RubyBank
+  successful_transaction: Money transferred successfully
+  account:
+    user_account: My account
+    credit_cards: My credit cards
+  credit_card:
+    number: "Card number: %{number}"
+    balance: "Balance: %{balance}"
+  transaction:
+    user_transactions: Transactions
+    sender_card: "From: %{number}"
+    recipient_card: "To: %{number}"
+    amount: "Amount: %{amount}"
+    date: "Date: %{date}"
+    no_transactions: You don`t have any transactions yet.
+  form:
+    sender_card: Select sender card
+    recipient_card: Enter recipient card
+    amount: Enter amount
+  links:
+    home_page: Home
+    user_account: My account
+    log_out: Log out
+  buttons:
+    transfer_money: Transfer money
   errors:
-    non_negative_balance: Balance cannot be negative
-    bigger_than_balance: cannot be bigger than balance
-    no_card: No such card
+    bigger_than_balance: Amount cannot be bigger than balance
+    no_card: Card not found
     invalid_transfer: You can`t transfer money on the same card
-    invalid_amount: should include only digits
+    invalid_amount: can`t be negative or contain letters

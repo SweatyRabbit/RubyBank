@@ -1,0 +1,17 @@
+<%= form_with(url: transactions_path, method: "post", local: true) do |form| %>
+  <div class="field">
+    <%= form.select :sender_card, @sender_cards.pluck(:number), prompt: t('form.sender_card'), required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :recipient_card, placeholder: t('form.recipient_card'), required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :amount, placeholder: t('form.amount'), required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit t('buttons.transfer_money') %>
+  </div>
+<% end %>

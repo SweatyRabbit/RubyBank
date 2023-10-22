@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe CreditCard do
-  subject(:credit_card) { described_class.new }
+  subject(:credit_card) { create(:credit_card) }
 
   describe 'relations' do
     it { is_expected.to belong_to(:user) }
@@ -15,6 +15,6 @@ RSpec.describe CreditCard do
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:number) }
-    it { is_expected.to validate_uniqueness_of(:number) }
+    it { is_expected.to validate_uniqueness_of(:number).case_insensitive }
   end
 end
