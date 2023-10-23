@@ -1,0 +1,5 @@
+<h2> <%= I18n.t('account.credit_cards') %> </h2>
+<% @user.credit_cards.each do |card| %>
+  <p> <%= I18n.t('credit_card.number', number: card.number) %> </p>
+  <p> <%= I18n.t('credit_card.balance', balance: number_to_currency(card.balance / 100.0)) %> </p>
+<% end %>

@@ -10,12 +10,14 @@ RSpec.describe 'Show', :feature do
   end
 
   describe 'credit card info' do
+    let(:expected_balance) { credit_card.balance / 100 }
+
     it 'displays credit card number' do
       expect(page).to have_content(credit_card.number)
     end
 
     it 'displays credit card balance' do
-      expect(page).to have_content(credit_card.balance / 100)
+      expect(page).to have_content(expected_balance)
     end
   end
 

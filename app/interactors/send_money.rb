@@ -26,6 +26,6 @@ class SendMoney
   end
 
   def add_balance
-    context.recipient_card.update!(balance: context.recipient_card.balance + context.amount)
+    context.recipient_card.lock!.update!(balance: context.recipient_card.balance + context.amount)
   end
 end

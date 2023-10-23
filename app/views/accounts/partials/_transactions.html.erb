@@ -1,0 +1,18 @@
+<% if @user.sent_transactions.present? || @user.received_transactions.present? %>
+  <h2> <%= I18n.t('transaction.user_transactions') %> </h2>
+  <% @user.sent_transactions.each do |transaction| %>
+    <p> <%= I18n.t('transaction.sender_card', number: transaction.sender_card.number ) %></p>
+    <p> <%= I18n.t('transaction.recipient_card', number: transaction.recipient_card.number) %></p>
+    <p> <%= I18n.t('transaction.amount', amount: number_to_currency(transaction.amount / 100.0)) %></p>
+    <p> <%= I18n.t('transaction.date', date: I18n.l(transaction.created_at)) %> </p>
+  <% end %>
+
+  <% @user.received_transactions.each do |transaction| %>
+    <p> <%= I18n.t('transaction.sender_card', number: transaction.sender_card.number ) %></p>
+    <p> <%= I18n.t('transaction.recipient_card', number: transaction.recipient_card.number) %></p>
+    <p> <%= I18n.t('transaction.amount', amount: number_to_currency(transaction.amount / 100.0)) %></p>
+    <p> <%= I18n.t('transaction.date', date: I18n.l(transaction.created_at)) %> </p>
+  <% end %>
+<% else %>
+  <p> <%= I18n.t('transaction.no_transactions') %> </p>
+<% end %>

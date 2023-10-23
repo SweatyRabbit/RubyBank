@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class CreditCard < ApplicationRecord
-  # self.locking_column = :balance
   MIN_VALUE = 0.0
 
   validates :number, presence: true, uniqueness: true

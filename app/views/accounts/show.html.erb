@@ -2,28 +2,7 @@
 
 <%= link_to I18n.t('links.home_page'), root_path %>
 
-<h2> <%= I18n.t('account.credit_cards') %> </h2>
-<% @user.credit_cards.each do |card| %>
-  <p> <%= I18n.t('credit_card.number', number: card.number) %> </p>
-  <p> <%= I18n.t('credit_card.balance', balance: number_to_currency(card.balance / 100.0)) %> </p>
-<% end %>
 
+<%= render partial: "accounts/partials/credit_card_info" %>
 
-<% if @user.sent_transactions.present? || @user.received_transactions.present? %>
-  <h2> <%= I18n.t('transaction.user_transactions') %> </h2>
-  <% @user.sent_transactions.each do |transaction| %>
-    <p> <%= I18n.t('transaction.sender_card', number: transaction.sender_card.number ) %></p>
-    <p> <%= I18n.t('transaction.recipient_card', number: transaction.recipient_card.number) %></p>
-    <p> <%= I18n.t('transaction.amount', amount: number_to_currency(transaction.amount / 100.0)) %></p>
-    <p> <%= I18n.t('transaction.date', date: I18n.l(transaction.created_at)) %> </p>
-  <% end %>
-
-  <% @user.received_transactions.each do |transaction| %>
-    <p> <%= I18n.t('transaction.sender_card', number: transaction.sender_card.number ) %></p>
-    <p> <%= I18n.t('transaction.recipient_card', number: transaction.recipient_card.number) %></p>
-    <p> <%= I18n.t('transaction.amount', amount: number_to_currency(transaction.amount / 100.0)) %></p>
-    <p> <%= I18n.t('transaction.date', date: I18n.l(transaction.created_at)) %> </p>
-  <% end %>
-<% else %>
-  <p> <%= I18n.t('transaction.no_transactions') %> </p>
-<% end %>
+<%= render partial: "accounts/partials/transactions" %>
