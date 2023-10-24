@@ -7,4 +7,14 @@ class TransactionForm
 
   validates :sender_card, :recipient_card, presence: true
   validates :amount, numericality: { greater_than: 0, message: I18n.t('errors.invalid_amount') }
+  validate :difference_credit_cards
+
+  private
+
+  def difference_credit_cards
+    return unless sender_card && recipient_card && sender_card == recipient_card
+
+    errors.add(:base,
+               I18n.t('errors.invalid_transfer'))
+  end
 end

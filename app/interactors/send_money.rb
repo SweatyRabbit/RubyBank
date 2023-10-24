@@ -4,10 +4,12 @@ class SendMoney
   include Interactor
 
   def call
-    ActiveRecord::Base.transaction do
-      crete_transaction
-      subtract_balance
-      add_balance
+    context.sender_card.with_lock do
+      context.recipient_card.with_lock do
+        crete_transaction
+        subtract_balance
+        add_balance
+      end
     end
   rescue ActiveRecord::RecordInvalid, ActiveRecord::StaleObjectError => e
     context.fail!(error: e.record.errors.full_messages.join('. '))
@@ -22,10 +24,10 @@ class SendMoney
   end
 
   def subtract_balance
-    context.sender_card.lock!.update!(balance: context.sender_card.balance - context.amount)
+    context.sender_card.update!(balance: context.sender_card.balance - context.amount)
   end
 
   def add_balance
-    context.recipient_card.lock!.update!(balance: context.recipient_card.balance + context.amount)
+    context.recipient_card.update!(balance: context.recipient_card.balance + context.amount)
   end
 end

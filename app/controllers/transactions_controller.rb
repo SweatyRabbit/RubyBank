@@ -13,6 +13,6 @@ class TransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.permit(:amount, :sender_card, :recipient_card, :lock_version)
+    params.permit(:amount, :sender_card, :recipient_card)
   end
 end

@@ -3,5 +3,5 @@
 class TransferMoney
   include Interactor::Organizer
 
-  organize ValidateForm, FindSenderCard, FindRecipientCard, CheckDifferenceCard, SendMoney
+  organize ValidateForm, FindSenderCard, FindRecipientCard, SendMoney
 end

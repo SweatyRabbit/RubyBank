@@ -9,7 +9,7 @@ class Transaction < ApplicationRecord
   private
 
   def validate_amount
-    return if sender_card.balance >= amount
+    return if sender_card.present? && sender_card.balance >= amount
 
     errors.add(:base, I18n.t('errors.bigger_than_balance'))
   end

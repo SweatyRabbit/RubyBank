@@ -10,12 +10,12 @@ class ValidateForm
 
     context.fail!(error: transaction_form.errors.full_messages.join('. ')) unless transaction_form.valid?
 
-    context.amount = amount
+    context.amount = amount_in_cents
   end
 
   private
 
-  def amount
+  def amount_in_cents
     (context.amount.to_f * 100).to_i
   end
 end
