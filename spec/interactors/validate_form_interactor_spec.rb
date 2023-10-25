@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe ValidateForm do
+RSpec.describe ValidateFormInteractor do
   subject(:context) do
     described_class.call(amount:, sender_card:, recipient_card:)
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe SendMoney do
+RSpec.describe SendMoneyInteractor do
   subject(:context) { described_class.call(sender_card:, recipient_card:, amount:) }
 
   describe '.call' do

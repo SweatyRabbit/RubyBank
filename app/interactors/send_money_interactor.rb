@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-class SendMoney
-  include Interactor
-
+class SendMoneyInteractor < BaseInteractor
   def call
     context.sender_card.with_lock do
       context.recipient_card.with_lock do
-        crete_transaction
+        create_money_transaction
         subtract_balance
         add_balance
       end
@@ -17,7 +15,7 @@ class SendMoney
 
   private
 
-  def crete_transaction
+  def create_money_transaction
     Transaction.create!(sender_card: context.sender_card,
                         recipient_card: context.recipient_card,
                         amount: context.amount)

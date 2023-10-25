@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-class TransactionForm
-  include ActiveModel::Model
-
+class TransactionForm < BaseForm
   attr_accessor :amount, :sender_card, :recipient_card
 
   validates :sender_card, :recipient_card, presence: true
@@ -12,7 +10,7 @@ class TransactionForm
   private
 
   def difference_credit_cards
-    return unless sender_card && recipient_card && sender_card == recipient_card
+    return if sender_card && recipient_card && sender_card != recipient_card
 
     errors.add(:base,
                I18n.t('errors.invalid_transfer'))

@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-class ValidateForm
-  include Interactor
-
+class ValidateFormInteractor < BaseInteractor
   def call
     transaction_form = TransactionForm.new(amount: context.amount,
                                            sender_card: context.sender_card,
