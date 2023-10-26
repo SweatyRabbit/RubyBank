@@ -16,4 +16,3 @@ test:
 production:
   <<: *default
   database: RubyBank_production
-  username: RubyBank
