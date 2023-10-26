@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-class TransferMoneyInteractor < BaseInteractor
-  include Interactor::Organizer
-
+class TransferMoneyOrganizer < BaseOrganizer
   organize ValidateFormInteractor, FindSenderCardInteractor, FindRecipientCardInteractor, SendMoneyInteractor
 end

@@ -2,7 +2,7 @@
 
 class TransactionsController < ApplicationController
   def create
-    transaction = TransferMoneyInteractor.call(transaction_params)
+    transaction = TransferMoneyOrganizer.call(transaction_params)
     if transaction.success?
       redirect_to root_path, notice: I18n.t('successful_transaction')
     else

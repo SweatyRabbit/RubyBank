@@ -1,13 +1,13 @@
-<% if @user.sent_transactions.present? || @user.received_transactions.present? %>
+<% if sent_transactions.present? || received_transactions.present? %>
   <h2> <%= t('transaction.user_transactions') %> </h2>
-  <% @user.sent_transactions.each do |transaction| %>
+  <% sent_transactions.each do |transaction| %>
     <p> <%= t('transaction.sender_card', number: transaction.sender_card.number ) %></p>
     <p> <%= t('transaction.recipient_card', number: transaction.recipient_card.number) %></p>
     <p> <%= t('transaction.amount', amount: number_to_currency(transaction.amount / 100.0)) %></p>
     <p> <%= t('transaction.date', date: I18n.l(transaction.created_at)) %> </p>
   <% end %>
 
-  <% @user.received_transactions.each do |transaction| %>
+  <% received_transactions.each do |transaction| %>
     <p> <%= t('transaction.sender_card', number: transaction.sender_card.number ) %></p>
     <p> <%= t('transaction.recipient_card', number: transaction.recipient_card.number) %></p>
     <p> <%= t('transaction.amount', amount: number_to_currency(transaction.amount / 100.0)) %></p>

@@ -10,9 +10,6 @@ class TransactionForm < BaseForm
   private
 
   def difference_credit_cards
-    return if sender_card && recipient_card && sender_card != recipient_card
-
-    errors.add(:base,
-               I18n.t('errors.invalid_transfer'))
+    errors.add(:base, I18n.t('errors.invalid_transfer')) if sender_card == recipient_card
   end
 end
