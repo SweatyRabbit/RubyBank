@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  app:
+    image: ruby-bank
+    environment:
+      RAILS_ENV: development
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+
+  db:
+    image: postgres:15.3
+    environment:
+      POSTGRES_DB: RubyBank_development
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
