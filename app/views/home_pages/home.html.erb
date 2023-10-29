@@ -1,7 +1,7 @@
 <p> <%= t('welcome_message') %> </p>
 
-<%= link_to t('links.log_out'), destroy_user_session_path, data: { turbo_method: :delete } %>
+<%= link_to t('links.log_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-outline-primary mr-2" %>
 
-<%= link_to t('links.user_account'), accounts_path %>
+<%= link_to t('links.user_account'), accounts_path, class: "btn btn-outline-primary mr-2" %>
 
 <%= render partial: "home_pages/partials/transaction_form" %>
