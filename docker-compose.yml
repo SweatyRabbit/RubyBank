@@ -1,17 +1,18 @@
 version: "3.9"
 services:
   app:
-    image: ruby-bank
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
-      RAILS_ENV: development
+      DATABASE_URL: "postgresql://postgres:postgres@db:5432/RubyBank_development"
+    ports:
+      - 3000:3000
     depends_on:
       - db
-    ports:
-      - "3000:3000"
 
   db:
     image: postgres:15.3
     environment:
       POSTGRES_DB: RubyBank_development
-      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
