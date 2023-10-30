@@ -2,6 +2,7 @@ databases:
   - name: ruby_bank
     databaseName: ruby_bank
     user: ruby_bank
+    region: eu-central
 
 services:
   - type: web
@@ -24,3 +25,4 @@ services:
         sync: false
       - key: RACK_ENV
         value: production
+    region: eu-central
