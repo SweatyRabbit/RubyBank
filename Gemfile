@@ -9,6 +9,8 @@ gem 'rails', '~> 7.1.1'
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.3', '>= 5.3.2'
 gem 'devise', '~> 4.9', '>= 4.9.2'
+gem 'factory_bot_rails', '~> 6.2'
+gem 'ffaker', '~> 2.23'
 gem 'i18n', '~> 1.14', '>= 1.14.1'
 gem 'importmap-rails', '~> 1.2', '>= 1.2.1'
 gem 'interactor', '~> 3.1', '>= 3.1.2'
@@ -24,9 +26,7 @@ group :development, :test do
   gem 'bullet', '~> 7.1', '>= 7.1.2'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
-  gem 'factory_bot_rails', '~> 6.2'
   gem 'fasterer', '~> 0.10.1'
-  gem 'ffaker', '~> 2.23'
   gem 'lefthook', '~> 1.5', '>= 1.5.2'
   gem 'pry-rails', '~> 0.3.9'
   gem 'rubocop-rails', '~> 2.21', '>= 2.21.2'
