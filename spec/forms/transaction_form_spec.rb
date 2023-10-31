@@ -6,6 +6,7 @@ RSpec.describe TransactionForm, type: :model do
 
     it { is_expected.to validate_presence_of(:sender_card) }
     it { is_expected.to validate_presence_of(:recipient_card) }
+    it { is_expected.to validate_presence_of(:amount) }
 
     it do
       expect(transaction_form).to validate_numericality_of(:amount).is_greater_than(0)

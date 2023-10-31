@@ -6,7 +6,6 @@ RUN gem install bundler
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 COPY . .
-ARG DEFAULT_PORT 3000
-EXPOSE ${DEFAULT_PORT}
+ARG PORT=3000
 
-CMD ["rails","server", "-b", "0.0.0.0"]
+CMD ["rails -p PORT"]

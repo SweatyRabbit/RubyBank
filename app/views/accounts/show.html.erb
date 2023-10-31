@@ -1,8 +1,5 @@
 <h1> <%= t('account.user_account') %> </h1>
 
-<%= link_to t('links.home_page'), root_path, class: "btn btn-outline-primary mr-2" %>
-
-
 <%= render partial: "accounts/partials/credit_card_info", locals: { credit_cards: @user.credit_cards } %>
 
 <%= render partial: "accounts/partials/transactions", locals: { received_transactions: @user.received_transactions, sent_transactions: @user.sent_transactions } %>

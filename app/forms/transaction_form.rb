@@ -3,7 +3,7 @@
 class TransactionForm < BaseForm
   attr_accessor :amount, :sender_card, :recipient_card
 
-  validates :sender_card, :recipient_card, presence: true
+  validates :sender_card, :recipient_card, :amount, presence: true
   validates :amount, numericality: { greater_than: 0, message: I18n.t('errors.invalid_amount') }
   validate :difference_credit_cards
 

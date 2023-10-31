@@ -2,20 +2,20 @@ name: CI
 on: [push, pull_request]
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: alpine-3.14
     services:
       postgres:
         image: postgres:15.3
         ports:
           - "5432:5432"
         env:
-          POSTGRES_DB: RubyBank_test
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://postgres:postgres@localhost:5432/RubyBank_test"
+      DATABASE_URL: "postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/${{ secrets.POSTGRES_DB }}"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -29,7 +29,7 @@ jobs:
         run: bundle exec rspec
 
   lint:
-    runs-on: ubuntu-latest
+    runs-on: alpine-3.14
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -37,5 +37,5 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Run Rubocop
-        run: bundle exec rubocop
+      - name: Run Lefthook
+        run: bundle exec lefhook run pre-commit

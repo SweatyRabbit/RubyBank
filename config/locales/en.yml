@@ -10,11 +10,13 @@ en:
           separator: '.'
           precision: 2
           format: '%u%n'
+  title: RubyBank
   welcome_message: Welcome to the RubyBank
   successful_transaction: Money transferred successfully
+  footer_title: © 2023 RubyBank, Inc
   account:
     user_account: My account
-    credit_cards: My credit cards
+    credit_cards: Credit cards
   credit_card:
     number: "Card number: %{number}"
     balance: "Balance: %{balance}"

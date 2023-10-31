@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RubyBank</title>
+    <title><%= t('title')%></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,7 +11,9 @@
   </head>
 
   <body>
+    <%= render partial: "layouts/partials/header" %>
     <%= render partial: "layouts/partials/flash_messages" %>
     <%= yield %>
+    <%= render partial: "layouts/partials/footer" %>
   </body>
 </html>

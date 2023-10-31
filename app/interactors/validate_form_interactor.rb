@@ -6,7 +6,7 @@ class ValidateFormInteractor < BaseInteractor
                                            sender_card: context.sender_card,
                                            recipient_card: context.recipient_card)
 
-    context.fail!(error: transaction_form.errors.full_messages.join('. ')) unless transaction_form.valid?
+    context.fail!(error: transaction_form.errors.full_messages.join('. ')) if transaction_form.invalid?
 
     context.amount = amount_in_cents
   end
