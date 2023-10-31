@@ -38,4 +38,4 @@ jobs:
         with:
           bundler-cache: true
       - name: Run Lefthook
-        run: bundle exec lefthook run pre-commit
+        run: bundle exec lefthook run pull-request
