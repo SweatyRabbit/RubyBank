@@ -2,7 +2,7 @@ name: CI
 on: [push, pull_request]
 jobs:
   test:
-    runs-on: alpine-3.14
+    runs-on: ubuntu-20.04
     services:
       postgres:
         image: postgres:15.3
@@ -29,7 +29,7 @@ jobs:
         run: bundle exec rspec
 
   lint:
-    runs-on: alpine-3.14
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
