@@ -1,18 +1,36 @@
 <% if sent_transactions.present? || received_transactions.present? %>
-  <h2> <%= t('transaction.user_transactions') %> </h2>
-  <% sent_transactions.each do |transaction| %>
-    <p> <%= t('transaction.sender_card', number: transaction.sender_card.number ) %></p>
-    <p> <%= t('transaction.recipient_card', number: transaction.recipient_card.number) %></p>
-    <p> <%= t('transaction.amount', amount: number_to_currency(transaction.amount / 100.0)) %></p>
-    <p> <%= t('transaction.date', date: I18n.l(transaction.created_at)) %> </p>
-  <% end %>
+  <h2><%= t('transaction.user_transactions') %></h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th><%= t('transaction.sender_card') %></th>
+          <th><%= t('transaction.recipient_card') %></th>
+          <th><%= t('transaction.amount') %></th>
+          <th><%= t('transaction.date') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% sent_transactions.each do |transaction| %>
+          <tr>
+            <td><%= transaction.sender_card.number %></td>
+            <td><%= transaction.recipient_card.number %></td>
+            <td><%= number_to_currency(transaction.amount / 100.0) %></td>
+            <td><%= I18n.l(transaction.created_at) %></td>
+          </tr>
+        <% end %>
 
-  <% received_transactions.each do |transaction| %>
-    <p> <%= t('transaction.sender_card', number: transaction.sender_card.number ) %></p>
-    <p> <%= t('transaction.recipient_card', number: transaction.recipient_card.number) %></p>
-    <p> <%= t('transaction.amount', amount: number_to_currency(transaction.amount / 100.0)) %></p>
-    <p> <%= t('transaction.date', date: I18n.l(transaction.created_at)) %> </p>
-  <% end %>
+        <% received_transactions.each do |transaction| %>
+          <tr>
+            <td><%= transaction.sender_card.number %></td>
+            <td><%= transaction.recipient_card.number %></td>
+            <td><%= number_to_currency(transaction.amount / 100.0) %></td>
+            <td><%= I18n.l(transaction.created_at) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <% else %>
-  <p> <%= t('transaction.no_transactions') %> </p>
+  <p><%= t('transaction.no_transactions') %></p>
 <% end %>
