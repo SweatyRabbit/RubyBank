@@ -23,12 +23,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name: ENV.fetch('SMTP_USERNAME'),
-    password: ENV.fetch('SMTP_PASSWORD'),
-    address: 'sandbox.smtp.mailtrap.io',
-    host: 'sandbox.smtp.mailtrap.io',
-    port: '2525',
-    authentication: :cram_md5
+    user_name: ENV.fetch('GMAIL_USERNAME'),
+    password: ENV.fetch('GMAIL_PASSWORD'),
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'example.com',
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
   config.active_storage.service = :local
   config.action_mailer.raise_delivery_errors = false
