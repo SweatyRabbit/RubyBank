@@ -6,8 +6,12 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     super do |resource|
       if resource.persisted?
-        CreditCard.create(number: FFaker::Bank.card_number, balance: MIN_VALUE,
-                          user: resource)
+        begin
+          CreditCard.create!(number: FFaker::Bank.card_number, balance: MIN_VALUE,
+                             user: resource)
+        rescue ActiveRecord::RecordNotUnique
+          retry
+        end
       end
     end
   end
