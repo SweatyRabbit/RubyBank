@@ -2,28 +2,21 @@
 
 RSpec.describe 'Show', :feature do
   let(:user) { create(:user) }
-  let!(:credit_card) { create(:credit_card, user:) }
 
   before do
     sign_in(user)
     visit accounts_path(user)
   end
 
-  describe 'credit card info' do
-    let(:expected_balance) { credit_card.balance / 100 }
-
-    it 'displays credit card number' do
-      expect(page).to have_content(credit_card.number)
-    end
-
-    it 'displays credit card balance' do
-      expect(page).to have_content(expected_balance)
-    end
+  describe 'displays welcome message for user' do
+    it { expect(page).to have_content(I18n.t('account.welcome_message', email: user.email)) }
   end
 
-  describe 'transactions info' do
-    context 'when user don`t have any transactions' do
-      it { expect(page).to have_content(I18n.t('transaction.no_transactions')) }
-    end
+  describe 'displays credit card dropdown' do
+    it { expect(page).to have_select(:number) }
+  end
+
+  describe "displays #{I18n.t('buttons.view_details')} button" do
+    it { expect(page).to have_button(I18n.t('buttons.view_details')) }
   end
 end

@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resource :transactions, only: %i[create]
 
   resource :accounts, only: %i[show]
+
+  resource :credit_cards, only: %i[show]
 end

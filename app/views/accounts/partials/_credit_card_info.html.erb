@@ -1,5 +1,0 @@
-<h2> <%= t('account.credit_cards') %> </h2>
-<% credit_cards.each do |card| %>
-  <p> <%= t('credit_card.number', number: card.number) %> </p>
-  <p> <%= t('credit_card.balance', balance: number_to_currency(card.balance / 100.0)) %> </p>
-<% end %>

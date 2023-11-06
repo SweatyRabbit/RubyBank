@@ -1,0 +1,6 @@
+<h3> <%= t('account.credit_card_info') %> </h3>
+<%= link_to t('buttons.back'), :back, class: "btn btn-primary" %>
+
+<%= render partial: "credit_cards/partials/credit_card_info", locals: {credit_card: @credit_card} %>
+
+<%= render partial: "credit_cards/partials/transactions", locals: { received_transactions: @credit_card.received_transactions, sent_transactions: @credit_card.sent_transactions } %>

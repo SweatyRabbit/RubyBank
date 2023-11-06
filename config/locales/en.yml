@@ -12,32 +12,37 @@ en:
           format: '%u%n'
   title: RubyBank
   welcome_message: |
-      Welcome to RubyBank!<br> We offer a convenient feature for you - sending funds to another user's card. To do so, follow these steps:<br>
+      Welcome to RubyBank!<br> We offer a convenient feature for you - sending funds to another user's card. To do so, follow these steps:
       <ul>
-        <li> Select the card from which you want to make the transfer. You can easily do this from the dropdown list, which lists your cards.</li><br>
-        <li> Enter the recipient's card number. Make sure you enter the correct number to ensure your funds go where you want them to.</li><br>
-        <li> Specify the amount you wish to send. We support transfers of different amounts - choose the one that suits you.</li><br>
-        <li> Click the 'Transfer' button to complete the transaction.</li><br>
+        <li> Select the card from which you want to make the transfer. You can easily do this from the dropdown list, which lists your cards.</li>
+        <li> Enter the recipient's card number. Make sure you enter the correct number to ensure your funds go where you want them to.</li>
+        <li> Specify the amount you wish to send. We support transfers of different amounts - choose the one that suits you.</li>
+        <li> Click the 'Transfer' button to complete the transaction.</li>
       </ul>
       All set! Your funds have been successfully sent to the specified card. Don't forget to check your transaction history to stay informed about all your financial operations.<br>
       Thank you for choosing RubyBank!
-
   successful_transaction: Money transferred successfully
-  footer_title: © 2023 RubyBank, Inc
   account:
-    user_account: My account
-    credit_cards: Credit cards
+    welcome_message: Welcome, %{email} to your personal account!
+    credit_card_info: Credit card information
+    credit_card_details: |
+      You have the ability to view the details of your credit cards. To access the information, follow these steps:
+      <ul>
+        <li> Choose the credit card you want to explore from the dropdown list, which contains all of your cards.</li>
+        <li> Click the 'View Details' button to access the card's information.</li>
+      <ul>
   credit_card:
     number: "Card number: %{number}"
     balance: "Balance: %{balance}"
   transaction:
-    user_transactions: Transactions
+    credit_card_transactions: Transactions
     sender_card: From
     recipient_card: To
     amount: Amount
     date: Date
     no_transactions: You don`t have any transactions yet.
   form:
+    credit_card: Credit card
     sender_card: Select sender card
     recipient_card: Enter recipient card
     amount: Enter amount
@@ -47,6 +52,8 @@ en:
     log_out: Log out
   buttons:
     transfer_money: Transfer money
+    view_details: View details
+    back: Back
   errors:
     bigger_than_balance: Amount cannot be bigger than balance
     no_card: Card not found
