@@ -2,7 +2,7 @@
 
 class CreditCardsController < ApplicationController
   def show
-    @credit_card = CreditCard.find_by(number: credit_cards_params[:number])
+    @credit_card = current_user.credit_cards.find_by(number: credit_cards_params[:number])
   end
 
   private
