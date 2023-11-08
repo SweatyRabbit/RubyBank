@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-3">
+      <div class="px-4 pt-5 my-5 text-center">
+        <%= form_with(url: transactions_path, method: "post", local: true) do |form| %>
+          <div class="form-group">
+            <div class="form-group mb-3">
+              <%= form.select :sender_card, @sender_cards.pluck(:number), { prompt: t('form.sender_card'), required: true }, { class: 'form-select' } %>
+            </div>
+            <div class="form-group mb-3">
+              <%= form.text_field :recipient_card, placeholder: t('form.recipient_card'), required: true, class: 'form-control' %>
+            </div>
+            <div class="form-group mb-3">
+              <%= form.text_field :amount, placeholder: t('form.amount'), required: true, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="actions">
+            <%= form.submit t('buttons.transfer_money'), class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

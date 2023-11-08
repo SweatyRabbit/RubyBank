@@ -1,33 +1,62 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   "true": "foo"
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  time:
+    formats:
+      default: "%Y.%m.%d - %H:%M"
+  number:
+     currency:
+        format:
+          unit: '$'
+          delimiter: ','
+          separator: '.'
+          precision: 2
+          format: '%u%n'
+  title: RubyBank
+  welcome_message: |
+      Welcome to RubyBank!<br> We offer a convenient feature for you - sending funds to another user's card. To do so, follow these steps:
+      <ul>
+        <li> Select the card from which you want to make the transfer. You can easily do this from the dropdown list, which lists your cards.</li>
+        <li> Enter the recipient's card number. Make sure you enter the correct number to ensure your funds go where you want them to.</li>
+        <li> Specify the amount you wish to send. We support transfers of different amounts - choose the one that suits you.</li>
+        <li> Click the 'Transfer' button to complete the transaction.</li>
+      </ul>
+      All set! Your funds have been successfully sent to the specified card. Don't forget to check your transaction history to stay informed about all your financial operations.<br>
+      Thank you for choosing RubyBank!
+  successful_transaction: Money transferred successfully
+  account:
+    welcome_message: Welcome, %{email} to your personal account!
+    credit_card_info: Credit card information
+    credit_card_details: |
+      You have the ability to view the details of your credit cards. To access the information, follow these steps:
+      <ul>
+        <li> Choose the credit card you want to explore from the dropdown list, which contains all of your cards.</li>
+        <li> Click the 'View Details' button to access the card's information.</li>
+      <ul>
+  credit_card:
+    number: "Card number: %{number}"
+    balance: "Balance: %{balance}"
+    not_found: Credit card not found
+  transaction:
+    credit_card_transactions: Transactions
+    sender_card: From
+    recipient_card: To
+    amount: Amount
+    date: Date
+    no_transactions: You don`t have any transactions yet.
+  form:
+    credit_card: Credit card
+    sender_card: Select sender card
+    recipient_card: Enter recipient card
+    amount: Enter amount
+  links:
+    home_page: Home
+    user_account: My account
+    log_out: Log out
+  buttons:
+    transfer_money: Transfer money
+    view_details: View details
+    back: Back
+  errors:
+    bigger_than_balance: Amount cannot be bigger than balance
+    no_card: Card not found
+    invalid_transfer: You can`t transfer money on the same card
+    invalid_amount: can`t be negative or contain letters

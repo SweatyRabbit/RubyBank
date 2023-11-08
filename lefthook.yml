@@ -1,0 +1,7 @@
+pull-request:
+  parallel: true
+  commands:
+    rubocop:
+      run: bundle exec rubocop
+    fasterer:
+      run: bundle exec fasterer

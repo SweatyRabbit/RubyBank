@@ -1,6 +1,13 @@
-Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+# frozen_string_literal: true
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+Rails.application.routes.draw do
+  devise_for :users, controllers: { registrations: 'registrations' }
+
+  root 'home_pages#home'
+
+  resource :transactions, only: %i[create]
+
+  resource :accounts, only: %i[show]
+
+  resource :credit_cards, only: %i[show]
 end

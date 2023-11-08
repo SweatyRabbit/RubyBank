@@ -1,0 +1,10 @@
+<h3> <%= t('account.welcome_message', email: @user.email) %> </h3>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-5 text-center">
+      <%= t('account.credit_card_details').html_safe %>
+    </div>
+  </div>
+</div>
+
+<%= render partial: "accounts/partials/user_credit_cards", locals: { credit_cards: @user.credit_cards } %>

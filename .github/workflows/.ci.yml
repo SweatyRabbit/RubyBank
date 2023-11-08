@@ -1,0 +1,41 @@
+name: CI
+on: pull_request
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    services:
+      postgres:
+        image: postgres:15.3
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/${{ secrets.POSTGRES_DB }}"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Set up database
+        run: bundle exec rails db:migrate
+      - name: Run tests
+        run: bundle exec rspec
+
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Run Lefthook
+        run: bundle exec lefthook run pull-request
