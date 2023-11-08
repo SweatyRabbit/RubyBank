@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CreditCard < ApplicationRecord
-  MIN_VALUE = 0.0
+  MIN_VALUE = 0
 
   validates :number, presence: true, uniqueness: true
   validates :balance, numericality: { greater_than_or_equal_to: MIN_VALUE }

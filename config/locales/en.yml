@@ -34,6 +34,7 @@ en:
   credit_card:
     number: "Card number: %{number}"
     balance: "Balance: %{balance}"
+    not_found: Credit card not found
   transaction:
     credit_card_transactions: Transactions
     sender_card: From
